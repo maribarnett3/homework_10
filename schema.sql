@@ -5,7 +5,7 @@
 --   * **name** - VARCHAR(30) to hold department name
 
 CREATE TABLE department (
-    id INTEGER PRIMARY KEY,
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(30) NOT NULL
 );
 
@@ -18,7 +18,7 @@ CREATE TABLE department (
 --   * **department_id** -  INT to hold reference to department role belongs to
 
  CREATE TABLE role (
-    id INTEGER PRIMARY KEY,
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(30) NOT NULL, 
     salary DECIMAL NOT NULL,
     department_id INTEGER,
@@ -35,7 +35,7 @@ CREATE TABLE department (
 --   * **manager_id** - INT to hold reference to another employee that manager of the current employee. This field may be null if the employee has no manager
 
 CREATE TABLE employee (
-    id INTEGER PRIMARY KEY,
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
     role_id INTEGER,
