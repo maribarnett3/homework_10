@@ -1,0 +1,8 @@
+{
+    "database":"homework10",
+    "pw":"",
+    "user":"root",
+    "host":"localhost",
+    "port": 3306,
+    "file": "schema.sql"
+}
