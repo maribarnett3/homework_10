@@ -50,11 +50,18 @@ var orm = {
       cb(result);
     });
   },
-  selectWhere: function(tableInput, colToSearch, valOfCol) {
+  selectSql: function(queryString, queryValues, cb) {
+
+    connection.query(queryString, queryValues, function(err, result) {
+      if (err) throw err;
+      cb(result);
+    });
+  },
+  selectWhere: function(tableInput, colToSearch, valOfCol, cb) {
     var queryString = "SELECT * FROM ?? WHERE ?? = ?";
     connection.query(queryString, [tableInput, colToSearch, valOfCol], function(err, result) {
       if (err) throw err;
-      console.log(result);
+      cb(result);
     });
   },
   create: function(table, cols, vals, cb) {

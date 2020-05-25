@@ -1,4 +1,6 @@
 const employeeModule = require("./lib/employee");
+const roleModule = require("./lib/role");
+const departmentModule = require("./lib/department");
 // import {addEmployee } from "./lib/employee";
 const inquirer = require("inquirer");
 const path = require("path");
@@ -70,7 +72,29 @@ function addRecord(type) {
                 console.log(error)
                 start()
             })
-    } else {
+    } else if (type.indexOf("role") != -1) {
+        roleModule.addrole().then(function (result) {
+
+            start();
+        })
+            .catch(function (error) {
+                console.log("Failed to add employee")
+                console.log(error)
+                start()
+            })
+    }
+    else if (type.indexOf("department") != -1) {
+        departmentModule.adddepartment().then(function (result) {
+
+            start();
+        })
+            .catch(function (error) {
+                console.log("Failed to add employee")
+                console.log(error)
+                start()
+            })
+    }
+    else {
         start()
     }
 }
@@ -102,7 +126,41 @@ function viewRecords(type) {
                 })
 
         }
-        
+
+    } else if (type.indexOf("role") != -1) {
+        roleModule.viewroles().then(function (result) {
+
+            start();
+        })
+            .catch(function (error) {
+                console.log("Failed to add employee")
+                console.log(error)
+                start()
+            })
+    }
+    else if (type.indexOf("department") != -1) {
+        if (type.indexOf("budget") != -1) {
+            departmentModule.viewdepartmentBudget().then(function (result) {
+
+                start();
+            })
+                .catch(function (error) {
+                    console.log("Failed to add employee")
+                    console.log(error)
+                    start()
+                })
+        } else {
+            departmentModule.viewdepartments().then(function (result) {
+
+                start();
+            })
+                .catch(function (error) {
+                    console.log("Failed to add employee")
+                    console.log(error)
+                    start()
+                })
+        }
+
     } else {
         start()
     }
@@ -121,7 +179,30 @@ function deleteRecord(type) {
                 console.log(error)
                 start()
             })
-    } else {
+    } else if (type.indexOf("role") != -1) {
+        roleModule.deleterole().then(function (result) {
+
+            start();
+        })
+            .catch(function (error) {
+                console.log("Failed to add employee")
+                console.log(error)
+                start()
+            })
+    }
+    else if (type.indexOf("department") != -1) {
+        departmentModule.deletedepartment().then(function (result) {
+
+            start();
+        })
+            .catch(function (error) {
+                console.log("Failed to add employee")
+                console.log(error)
+                start()
+            })
+    }
+
+    else {
         start()
     }
 
