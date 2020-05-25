@@ -22,6 +22,7 @@ function start() {
                 "view roles",
                 "view employees",
                 "update employee role",
+                "update employee manager",
                 "view employees by manager",
                 "delete department",
                 "delete role",
@@ -77,7 +78,41 @@ function addRecord(type) {
 function viewRecords(type) {
     // employeeModule
     if (type.indexOf("employee") != -1) {
-        employeeModule.viewEmployees().then(function (result) {
+        if (type.indexOf("manager") != -1) {
+            employeeModule.viewEmployeesbyManager().then(function (result) {
+
+                start();
+            })
+                .catch(function (error) {
+                    console.log("Failed to view employees")
+                    console.log(error)
+                    start()
+                })
+
+        }
+        else {
+            employeeModule.viewEmployees().then(function (result) {
+
+                start();
+            })
+                .catch(function (error) {
+                    console.log("Failed to view employees")
+                    console.log(error)
+                    start()
+                })
+
+        }
+        
+    } else {
+        start()
+    }
+
+}
+
+function deleteRecord(type) {
+    // employeeModule
+    if (type.indexOf("employee") != -1) {
+        employeeModule.deleteEmployee().then(function (result) {
 
             start();
         })
@@ -89,6 +124,38 @@ function viewRecords(type) {
     } else {
         start()
     }
+
+}
+function updateRecord(type) {
+    // employeeModule
+    if (type.indexOf("employee") != -1) {
+        if (type.indexOf("manager") != -1) {
+            employeeModule.updateEmployeemanager().then(function (result) {
+
+                start();
+            })
+                .catch(function (error) {
+                    console.log("Failed to view employees")
+                    console.log(error)
+                    start()
+                })
+        }
+        else {
+            employeeModule.updateEmployeeRole().then(function (result) {
+
+                start();
+            })
+                .catch(function (error) {
+                    console.log("Failed to view employees")
+                    console.log(error)
+                    start()
+                })
+        }
+
+    } else {
+        start()
+    }
+
 }
 
 // createManager()

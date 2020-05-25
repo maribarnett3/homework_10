@@ -18,6 +18,11 @@ var burger = {
       cb(res);
     });
   },
+  selectWhere: function(colToSearch, valOfCol, cb) {
+    orm.selectWhere("employee", colToSearch, valOfCol, function(res) {
+      cb(res);
+    });
+  },
   delete: function(condition, cb) {
     orm.delete("employee", condition, function(res) {
       cb(res);
